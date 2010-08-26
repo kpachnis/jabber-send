@@ -19,7 +19,7 @@ module JabberSend
       @client = Client.new(JID.new(@config['jabber']['id']))
     end
     
-    def send_message(to, msg, subject)
+    def send_message(recipients, msg, subject)
       @client.connect
       
       begin
@@ -28,8 +28,11 @@ module JabberSend
         abort "Authentication failed for #{@config['jabber']['id']}"
       end
       
-      message = Message.new(JID.new(to), msg).set_type(:normal).set_id('1').set_subject(subject)
-      @client.send(message)
+      recipients.split(',').each do |recipient|
+        message = Message.new(JID.new(recipient), msg).set_type(:normal).set_id('1').set_subject(subject)
+        @client.send(message)
+      end
+      
       @client.close
     end
   end

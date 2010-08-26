@@ -6,7 +6,7 @@ module JabberSend
     
     def run
       sender = Sender.new(@options.options[:config])
-      sender.send_message(@options.options[:recipient], @options.options[:message], @options.options[:subject])
+      sender.send_message(@options.options[:recipients], @options.options[:message], @options.options[:subject])
     end
   end
 end

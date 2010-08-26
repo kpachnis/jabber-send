@@ -11,7 +11,7 @@ module JabberSend
       @options = {
         :config => CONFIG,
         :message => "",
-        :recipient => "",
+        :recipients => "",
         :subject => ""
       }
       
@@ -31,8 +31,8 @@ module JabberSend
             @options[:message] = msg
           end
           
-          opts.on("-r", "--recipient [NAME]", "Receipient") do |recipient|
-            @options[:recipient] = recipient
+          opts.on("-r", "--recipient [NAME]", "Comma separated list of receipients") do |recipients|
+            @options[:recipients] = recipients
           end
           
           opts.on("-s", "--subject [TEXT]", "Subject") do |subject|
