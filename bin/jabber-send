@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'pathname'
+
+dir = Pathname(__FILE__).dirname.expand_path
+require (dir + '..' + 'lib' + 'jabber_send').expand_path
+
+jabber_sender = JabberSend::Runner.new(ARGV)
+jabber_sender.run
